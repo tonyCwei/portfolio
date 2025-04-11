@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JoJo's Doom Adventure</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+
+        code {
+            background-color: #f3f4f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+        }
+
+        pre {
+            background-color: #f3f4f6;
+            padding: 1rem;
+            overflow-x: auto;
+            border-radius: 0.5rem;
+        }
+
+        img, video {
+            margin: 1rem 0;
+        }
+
+        .numbered-bullets {
+            list-style-type: none;
+            counter-reset: item;
+        }
+
+        .numbered-bullets li {
+            display: block;
+            position: relative;
+            padding-left: 1.5em;
+        }
+
+        .numbered-bullets li:before {
+            content: counter(item) ".";
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Add scroll margin to section headers */
+        section[id] {
+            scroll-margin-top: 100px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%; /* Make it responsive */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+        }
+
+        .image-container {
+            display: flex;
+            flex-direction: column; /* Stack images vertically */
+            align-items: center; /* Center images horizontally */
+        }
+
+        .large-image {
+            width: 80%; /* Adjust the width as needed (e.g., 80% of the container) */
+            max-width: 600px; /* Set a maximum width for larger screens */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 10px; /* Space between images */
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans">
+    <div class="max-w-5xl mx-auto p-6 relative">
+        <a href="index.html" class="fixed top-6 left-6 z-50">
+            <img src="logo.jpg" alt="Logo" class="h-16 w-auto">
+        </a>
+        <h1 class="text-5xl font-bold text-red-600 mb-6">JoJo's Doom Adventure</h1>
+        <a href="https://frigidough.itch.io/jojos-doom-adventure" target="_blank">
+            <div class="mb-6">
+                <img src="https://img.shields.io/badge/Download%20on-itch.io-FA5C5C.svg?logoWidth=150" alt="Download on itch.io" class="rounded">
+            </div>
+        </a>
+        <a href="https://github.com/tonyCwei/JoJos-Doom-Adventure" target="_blank">
+            <div class="mb-6">
+                <img src="https://img.shields.io/badge/Source%20Code-GitHub-181717.svg?logo=github&logoWidth=150" alt="Source Code on GitHub" class="rounded">
+            </div>
+        </a>
+
+        <nav class="mb-12 sticky top-0 z-50 bg-gray-100 bg-opacity-90 p-4 rounded shadow-md">
+            <ul class="flex flex-wrap justify-center gap-4 text-lg font-semibold text-gray-700">
+                <li><a href="#gameplay-video" class="hover:text-red-500 transition-colors duration-200">Gameplay Video</a></li>
+                <li><a href="#level-design" class="hover:text-red-500 transition-colors duration-200">Level Design</a></li>
+                <li><a href="#perfect-dodge-system" class="hover:text-red-500 transition-colors duration-200">Perfect Dodge</a></li>
+                <li><a href="#scanner" class="hover:text-red-500 transition-colors duration-200">Scanner</a></li>
+                <li><a href="#boss-fight" class="hover:text-red-500 transition-colors duration-200">Boss Fight</a></li>
+                <li><a href="#eight-directional-sprite-system" class="hover:text-red-500 transition-colors duration-200">8-Directional Sprites</a></li>
+                <li><a href="#additional-gameplay-elements" class="hover:text-red-500 transition-colors duration-200">More Features</a></li>
+            </ul>
+        </nav>
+
+        <section id="gameplay-video" class="mb-12">
+            <h2 class="text-3xl font-semibold text-yellow-400 text-center mb-8">Gameplay Video</h2>
+            <div class="mb-6">
+                <a href="https://youtu.be/dAzUW5b5_-w" target="_blank" class="block hover:opacity-90 transition-opacity">
+                    <img src="https://img.youtube.com/vi/dAzUW5b5_-w/0.jpg" alt="Watch the gameplay" class="rounded-lg w-full">
+                </a>
+            </div>
+            <em class="block text-center">Click the image above to watch the full gameplay video with detailed timestamps on YouTube</em>
+        </section>
+
+        <section id="level-design" class="mb-12 prose prose-invert max-w-none text-lg">
+            <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Level Design</h2>
+            <p>During the level design process, a <strong>blockout</strong> was first created using Unreal Engine 5's <strong>cube grid system</strong>. This level includes two major objectives:</p>
+            <ul class="numbered-bullets">
+                <li><strong>Find three colored keys</strong> (Blue, Orange, and Red) to unlock different parts of the level.</li>
+                <li><strong>Activate three generators</strong> to power the passageway to the boss fight.</li>
+            </ul>
+            <p>The blockout allowed me to quickly plan and decide where to place <strong>locked doors</strong> and <strong>generators</strong>, helping me experiment with how these elements fit within the level's layout.</p>
+            <div class="mb-6">
+                <img src="https://i.imgur.com/pCFdiDR.png" alt="Blockout Level" class="rounded">
+                <p class="text-base text-gray-600 mt-1 text-center">Blockout Level</p>
+            </div>
+            <p>Once the blockout was complete and the core gameplay elements were established, the <strong>actual map</strong> was built based on the blockout layout. The entire level was also fully optimized through <strong>level streaming</strong> to ensure better performance.</p>
+            <div class="mb-6">
+                <img src="https://i.imgur.com/vPEuAoS.png" alt="Finished Level" class="rounded">
+                <p class="text-base text-gray-600 mt-1 text-center">Finished Level</p>
+            </div>
+            <div class="mb-6">
+                <img src="https://i.imgur.com/oQUBKQK.jpg" alt="Boss Arena" class="rounded">
+                <p class="text-base text-gray-600 mt-1 text-center">Boss Arena</p>
+            </div>
+        </section>
+
+        <section id="perfect-dodge-system" class="mb-12 prose prose-invert max-w-none text-lg">
+            <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Perfect Dodge System</h2>
+            <p>The game features a <em>Perfect Dodge</em> system where the player can slow down time if they dodge(Press E) an enemy attack (either melee or ranged) in the last second. During a perfect dodge, the environment will shift to black and white, and time will slow around the player, allowing them to take more actions. While time slows for the enemies and environment, the player themselves remain unaffected by the time slowdown.</p>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/WYLRqR5vXXA?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Melee Attack Perfect Dodge</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/7W2IkAgK39A?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Projectile Perfect Dodge</p>
+            </div>
+            <p>This <em>Perfect Dodge</em> system consists of two major parts:</p>
+            <ul class="numbered-bullets">
+                <li><strong>Determine if the player's dodge was perfect</strong></li>
+                <li><strong>Slow down time around the player and add the black-and-white effect</strong></li>
+            </ul>
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold text-green-400 text-center mb-4">Part 1: Perfect Dodge Check</h3>
+                <p>A struct called <code>FAttackInfo</code> is created in the custom GameState Class <code>ADoomGameStateBase</code>. This struct stores information about each attack, such as the start time, duration, and the attacker.</p>
+                <pre><code>struct FAttackInfo
+{
+    GENERATED_BODY()
+
+    float StartTime;
+    float Duration;
+    AActor* Attacker;
+
+    bool operator==(const FAttackInfo& Other) const
+    {
+        return (StartTime == Other.StartTime &&
+            Duration == Other.Duration &&
+            Attacker == Other.Attacker);
+    }
+};</code></pre>
+                <p>Each time an enemy melee attacks, <code>addMeleeAttackInfo()</code> is called. This function checks if the player is within melee attack range, and if true, it updates the AttackInfo and adds it to the activeAttacks array in the game state.</p>
+                <pre><code>void ABaseEnemy::addMeleeAttackInfo()
+{
+    float Distance = FVector::Dist(this->GetActorLocation(), playerCharacter->GetActorLocation());
+    if (Distance <= meleeAttackRange) { // If player is within the melee attack range
+        curAttackInfo.StartTime = GetWorld()->GetTimeSeconds();
+        curAttackInfo.Duration = meleeAttackDodgeWindow;
+        curAttackInfo.Attacker = this;
+        gameStateRef->addAttack(curAttackInfo);
+        isAdded = true;
+    }
+}</code></pre>
+                <p>As for enemy projectiles, since there's no attack range check like melee attacks, a different method is used to determine whether the player is going to be hit by the projectile. To accomplish this, a trigger box is added to each enemy projectile.</p>
+                <div class="mb-6">
+                    <img src="https://i.imgur.com/CEuTxoO.png" alt="Projectile Trigger Box" class="rounded">
+                    <p class="text-base text-gray-600 mt-1 text-center">Projectile Trigger Box</p>
+                </div>
+                <p>This square box is triggered when it overlaps with the player, which is when the dodge mechanic can be activated and the projectile's attack information is added to the game state. Below is the function that handles the overlap and adds the attack information to the game state for enemy projectiles:</p>
+                <pre><code>void AEnemyProjectile::BeginOverlapBoxDodge(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+    if (OtherActor->ActorHasTag("Player")) {
+        curAttackInfo.StartTime = GetWorld()->GetTimeSeconds();
+        curAttackInfo.Duration = attackDuration;
+        curAttackInfo.Attacker = this;
+        gameStateRef->addAttack(curAttackInfo);
+        isAdded = true;
+    }
+}</code></pre>
+                <p>Once proper <code>FAttackInfo</code> structs are stored in the <code>activeAttacks</code> array in the game state, the <code>checkPerfectDodge</code> function is called every time the player attempts a dodge. This function iterates through the <code>activeAttacks</code> array and calculates the time until the attack hits. The time until hit (<code>timeTillHit</code>) is determined by subtracting the current world time from the attack's projected hit time, which is calculated as <code>StartTime + Duration</code>. If the <code>timeTillHit</code> is positive and smaller than the player's <em>perfect dodge window</em>, the <em>Perfect Dodge</em> is performed.</p>
+                <pre><code>void ADoomCharacter::checkPerfectDodge()
+{
+    for (FAttackInfo& attackInfo : gameStateRef->getActiveAttacks()) {
+        float timeTillHit = attackInfo.StartTime + attackInfo.Duration - GetWorld()->GetTimeSeconds();
+        if (timeTillHit > 0 && timeTillHit <= perfectDodgeWindow) {
+            perfectDodge();
+            break;
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold text-green-400 text-center mb-4">Part 2: Perfect Dodge Result and Effect</h3>
+                <p>Since the time slow effect is only applied to enemies and not the player, simply setting <code>Global Time Dilation</code> will not work. Instead, when a <em>Perfect Dodge</em> is performed, an actor <code>ABulletTimeAura</code> is spawned at the player's location. This actor functions as a <em>time bubble</em>, slowing down all affected actors within its radius while leaving the player unaffected.</p>
+                <p>The <code>ABulletTimeAura</code> actor contains a sphere collision component. When an enemy or other relevant actor enters this bubble, their <code>Custom Time Dilation</code> is modified through <code>BeginOverlap</code> function to create the slow-motion effect. Once they leave the bubble, their <code>Custom Time Dilation</code> is reset to normal through <code>EndOverlap</code> function.</p>
+                <p>Additionally, <code>GlobalTimeDilation</code> is momentarily modified at the very beginning (for 0.05 seconds) to create a <em>dragging effect</em>, making the transition into slow motion feel more dynamic.</p>
+                <pre><code>void ADoomCharacter::perfectDodge() 
+{
+    FVector spawnLocation = GetActorLocation();
+    FRotator spawnRotation = GetActorRotation();
+
+    if (myBulletTimeAura) {
+        GetWorld()->SpawnActor<ABulletTimeAura>(myBulletTimeAura, spawnLocation, spawnRotation);
+    }
+
+    // Create dragging effect in the first 0.05 seconds of the perfect dodge
+    UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 0.1f);
+    GetWorld()->GetTimerManager().SetTimer(perfectDodgeEffectHandle, [&]()
+        {
+            UGameplayStatics::SetGlobalTimeDilation(GetWorld(), 1.0f);
+        }, 0.05, false);
+}</code></pre>
+                <p>Finally, to further enhance the <em>Perfect Dodge</em> effect, a black-and-white "filter" is applied during the time slow. This is achieved by attaching a <em>Post Process Component</em> to the <code>ABulletTimeAura</code> actor and setting its <em>Global Saturation</em> to black.</p>
+            </div>
+        </section>
+
+        <section id="scanner" class="mb-12 prose prose-invert max-w-none text-lg">
+            <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Scanner</h2>
+            <p>Pressing <code>Z</code> in-game activates the <strong>Environmental Scanner</strong>, which highlights important objects in the surroundings:</p>
+            <ul>
+                <li><strong>Enemies</strong>: Highlighted in <strong>Red</strong></li>
+                <li><strong>Pickups</strong> (Health, Armor, Ammo, Keys): Highlighted in <strong>Green</strong></li>
+                <li><strong>Weapon Pickups</strong>: Highlighted in <strong>Blue</strong></li>
+            </ul>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/pTdOrA1LUJU?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Scanner</p>
+            </div>
+            <p>How it works:</p>
+            <ul class="numbered-bullets">
+                <li>Spawn the <a href="https://github.com/tonyCwei/JoJos-Doom-Adventure/blob/main/Source/Doom/Ability/Scanner.cpp" class="text-blue-400 hover:underline" target="_blank">Scanner Actor</a> at the player location, which contains a <strong>Post Process Component</strong> that will apply the scanner material(<a href="https://blueprintue.com/blueprint/kme0-79b/" class="text-blue-400 hover:underline" target="_blank">Material Blueprint</a>).</li>
+                <li>The scanner expanding effect is achieved by updating the material's radius through <strong>Material Parameter Collection</strong> in the scanner's <strong>TimelineUpdate</strong>.</li>
+                <li><strong>Custom Stencils</strong> are assigned to relevant objects, allowing the material to differentiate between enemies, pickups, and weapons.</li>
+                <li>A <strong>Sphere Trace</strong> with the same expanding radius as the scanner material's is draw during each frame of scanner's <strong>TimelineUpdate</strong>. For any hit actors that need to be highlighted, their <code>Render CustomDepth Pass</code> property is toggled <strong>on</strong>, enabling them to appear in the scan. After a delay of <strong>5 seconds</strong> (the duration of the highlight), <code>RenderCustomDepth</code> is toggled <strong>off</strong>, returning them to normal rendering.</li>
+            </ul>
+        </section>
+
+        <section id="boss-fight" class="mb-12 prose prose-invert max-w-none text-lg">
+            <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Boss Fight</h2>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VJczFVShFUs?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Boss Encounter Cutscene Using Level Sequencer</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VKcTgW3T-lo?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Boss Projectile Attack</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/C9Ds9TkOfXg?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Boss Summon Attack</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/RuK720hXI4w?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Boss Drop Attack</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MpNsZUOBHU0?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Boss Laser Attack</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9G6hajQU598?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Boss Rising Orb Attack</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/l8KN3gbuoo8?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Boss End Cutscene and Level Transition</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-gray-800 text-white rounded-lg">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 text-left">Boss Attack</th>
+                            <th class="px-4 py-2 text-left">Mechanics</th>
+                            <th class="px-4 py-2 text-left">Damage Per Hit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-t border-gray-700 px-4 py-2"><strong>Projectile</strong></td>
+                            <td class="border-t border-gray-700 px-4 py-2">Shoots projectiles in a 120-degree arc</td>
+                            <td class="border-t border-gray-700 px-4 py-2">6 per projectile</td>
+                        </tr>
+                        <tr>
+                            <td class="border-t border-gray-700 px-4 py-2"><strong>Summon</strong></td>
+                            <td class="border-t border-gray-700 px-4 py-2">Summons 4 self-destructive enemies</td>
+                            <td class="border-t border-gray-700 px-4 py-2">25 per enemy</td>
+                        </tr>
+                        <tr>
+                            <td class="border-t border-gray-700 px-4 py-2"><strong>Drop</strong></td>
+                            <td class="border-t border-gray-700 px-4 py-2">Disappears, shows red circle indicator on the floor, then drops to deal AoE damage (radius: 1200, delay: 1.5s)</td>
+                            <td class="border-t border-gray-700 px-4 py-2">20 (AoE)</td>
+                        </tr>
+                        <tr>
+                            <td class="border-t border-gray-700 px-4 py-2"><strong>Laser</strong></td>
+                            <td class="border-t border-gray-700 px-4 py-2">Continuously shoots laser beams toward the player and summons a laser tower in the center of the arena</td>
+                            <td class="border-t border-gray-700 px-4 py-2">Tower: 5/sec, Boss: 6/sec</td>
+                        </tr>
+                        <tr>
+                            <td class="border-t border-gray-700 px-4 py-2"><strong>Rising Orb</strong></td>
+                            <td class="border-t border-gray-700 px-4 py-2">3 orbs rise into the sky and fly toward the player once at the top. Orbs can be destroyed (each orb has 50 HP)</td>
+                            <td class="border-t border-gray-700 px-4 py-2">10 per orb</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="mt-4">Above attack patterns are categorized into <strong>Light</strong> and <strong>Medium</strong> attacks. <strong>Heavy</strong> attacks consist of different <strong>combinations</strong> of the above boss attacks. The boss will first determine which <strong>attack category</strong>(Light, Medium, Heavy, or Filler) to use based on cooldowns and internal timers. Once the category is selected, the boss will then <strong>randomly choose an attack</strong> from the available task pool within that category.</p>
+            <div class="mb-6">
+                <a href="https://i.imgur.com/A4lfjIU.jpg" target="_blank" class="block hover:opacity-90 transition-opacity">
+                    <img src="https://i.imgur.com/A4lfjIU.jpg" alt="Boss' Behavior Tree" class="rounded">
+                    <p class="text-base text-gray-600 mt-1 text-center">Boss' Behavior Tree (Click to open in new tab)</p>
+                </a>
+            </div>
+        </section>
+
+        <section id="eight-directional-sprite-system" class="mb-12 prose prose-invert max-w-none text-lg">
+            <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Eight-Directional Sprite System</h2>
+            <div class="image-container">
+                <img src="https://media.giphy.com/media/gZdBe1mF5ISCfxP2To/giphy.gif" alt="Eight-Directional Sprite System" class="rounded large-image">
+                <img src="https://media.giphy.com/media/s3x1EbznMiVRjNHkeu/giphy.gif" alt="Eight-Directional Sprite System" class="rounded large-image">
+                <p class="text-base text-gray-600 mt-1 text-center">Eight-Directional Sprite System</p>
+            </div>
+            <p>The system determines the player's relative position using vector calculations:</p>
+            <ul class="list-disc pl-5">
+                <li><strong>Enemy Forward Vector</strong></li>
+                <li><strong>Enemy Right Vector</strong></li>
+                <li><strong>Vector from Enemy to Player</strong> (<code>Enemy->Player</code>)</li>
+            </ul>
+            <ul class="numbered-bullets">
+                <li>Use dot product of <code>Enemy->Player</code> and <code>Enemy Forward Vector</code> and convert to degrees to determine if the player is in front or behind.</li>
+                <li>Use dot product of <code>Enemy->Player</code> and <code>Enemy Right Vector</code> to determine whether the player is on the left or right.</li>
+            </ul>
+            <pre><code>void ABaseEnemy::updateDirectionalSprite()
+{
+    if (!playerCharacter) return;
+    
+    FVector vEnemeyPlayer = playerCharacter->GetActorLocation() - GetActorLocation();
+    vEnemeyPlayer.Normalize();
+
+    //Enemy->Player dot Enemy Forward vector
+    float EPdotEF = FVector::DotProduct(vEnemeyPlayer, GetActorForwardVector());
+
+    //Degree between Enemy->Player and Enemy Forward Vector
+    float radians = FMath::Acos(EPdotEF);
+    float degrees = FMath::RadiansToDegrees(radians);
+
+    //Enemy->Player dot Enemy Right vector
+    //if EPdotER > 0, player is on the Enemy Right. EPdotER < 0 means player is on the enemy left
+    float EPdotER = FVector::DotProduct(vEnemeyPlayer, GetActorRightVector());
+
+    if (EPdotER > 0) {
+        if (degrees >= 0 && degrees < 20) {
+            //Show enemy front sprite
+            updateFlipbook(-90, 0);
+        }
+        else if (degrees >= 20 && degrees < 70) {
+            //Show enemy front right sprite
+            updateFlipbook(-45, 1);
+        }
+        else if (degrees >= 70 && degrees < 120) {
+            //Show enemy right sprite
+            updateFlipbook(0, 2);
+        }
+        else if (degrees >= 120 && degrees < 160) {
+            //Show enemy back right sprite
+            updateFlipbook(45, 3);
+        }
+        else {
+            //Show enemy back sprite
+            updateFlipbook(90, 4);
+        }
+    }
+    else {
+        if (degrees >= 0 && degrees < 20) {
+            //Show enemy front sprite
+            updateFlipbook(-90, 0);
+        }
+        else if (degrees >= 20 && degrees < 70) {
+            //Show enemy front left sprite
+            updateFlipbook(-135, 7);
+        }
+        else if (degrees >= 70 && degrees < 120) {
+            //Show enemy left sprite
+            updateFlipbook(180, 6);
+        }
+        else if (degrees >= 120 && degrees < 160) {
+            //Show enemy back left sprite
+            updateFlipbook(135, 5);
+        }
+        else {
+            //Show enemy back sprite
+            updateFlipbook(90, 4);
+        }
+    }
+}</code></pre>
+            <p><code>updateFlipbook</code> is a helper function that updates the flipbook array in use based on an enum called <code>enemyState</code>. The <code>relativeDegree</code> parameter is used to set the relative rotation of the <code>EnemyFlipBookComponent</code> with regards to the enemy actor itself, ensuring it always faces the player.</p>
+            <pre><code>void ABaseEnemy::updateFlipbook(float relativeDegree, int32 index)
+{
+    switch (enemyState)
+    {
+    case IdleState:
+        currentFlipbooks = directionalFlipbooks;
+        break;
+
+    case MovingState:
+        currentFlipbooks = movingFlipbooks;
+        break;
+
+    case PreMeleeAttackState:
+        currentFlipbooks = preMeleeAttackFlipbooks;
+        break;
+
+    case MeleeAttackState:
+        currentFlipbooks = meleeAttackFlipbooks;
+        break;
+
+    case RangedAttackState:
+        currentFlipbooks = rangedAttackFlipbooks;
+        break;
+
+    default:
+        break;
+    }
+
+    EnemyFlipBookComponent->SetRelativeRotation(FRotator(0, relativeDegree, 0));
+    EnemyFlipBookComponent->SetFlipbook(currentFlipbooks[index]);
+}</code></pre>
+        </section>
+
+        <section id="additional-gameplay-elements" class="mb-12 prose prose-invert max-w-none text-lg">
+            <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Additional Gameplay Elements</h2>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9oPrG87H9Uc?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Explosive Barrel</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MDWXNpkE11o?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Laser Room</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/iRcnnehkXWY?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Destructible with Chaos System</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/o4KRM8-D6Pk?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Chase Sequence</p>
+            </div>
+            <p><strong>For a full gameplay video featuring all 7 weapons, 5 enemy types, and more, please check out the video in the <a href="#gameplay-video" class="text-blue-400 hover:underline">Gameplay Video</a> section above.</strong></p>
+        </section>
+
+        <footer class="mt-16 border-t border-gray-200 pt-6 text-center text-base text-gray-500">
+            <p>&copy; 2025 JoJo's Doom Adventure. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

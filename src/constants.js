@@ -15,7 +15,6 @@ export const dialogueData = {
     Feel free to take a look! Contact me at <a href = "mailto:weichenhao2020@gmail.com">weichenhao2020@gmail.com</a > if you have any job opportunities!`,
 
     JJDA: `JoJo's Doom Adventure is my latest project, a fast-paced first-person shooter made in Unreal Engine 5, inspired by JoJo's Bizarre Adventure and classic DOOM gameplay. 
-    Check out the <a href="https://youtu.be/dAzUW5b5_-w" target="_blank">gameplay video</a>.
     For a detailed breakdown and highlights, click <a href="jojos-doom-adventure.html" target="_blank">here</a>.`,
 
     DOD: `this is DOD`,

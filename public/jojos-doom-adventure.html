@@ -15,6 +15,8 @@
             padding: 0.2rem 0.4rem;
             border-radius: 0.25rem;
             font-family: monospace;
+            margin-top: 0.5rem; /* Optional: Add space above inline code */
+            margin-bottom: 0.5rem; /* Optional: Add space below inline code */
         }
 
         pre {
@@ -22,6 +24,8 @@
             padding: 1rem;
             overflow-x: auto;
             border-radius: 0.5rem;
+            margin-top: 1.5rem; /* Add space above the code box */
+            margin-bottom: 1.5rem; /* Add space below the code box */
         }
 
         img, video {
@@ -65,12 +69,16 @@
             left: 0;
             width: 100%; /* Full width */
             height: 100%; /* Full height */
+            margin-top: 2rem; /* Add space above the image container */
+            margin-bottom: 2rem; /* Add space below the image container */
         }
 
         .image-container {
             display: flex;
             flex-direction: column; /* Stack images vertically */
             align-items: center; /* Center images horizontally */
+            margin-top: 2rem; /* Add space above the image container */
+            margin-bottom: 2rem; /* Add space below the image container */
         }
 
         .large-image {
@@ -78,6 +86,11 @@
             max-width: 600px; /* Set a maximum width for larger screens */
             height: auto; /* Maintain aspect ratio */
             margin-bottom: 10px; /* Space between images */
+        }
+
+        /* Increase font size for specific classes */
+        .text-base {
+            font-size: 1.25rem; /* Adjust this value as needed */
         }
     </style>
 </head>
@@ -355,19 +368,22 @@
             <div class="mb-6">
                 <a href="https://i.imgur.com/A4lfjIU.jpg" target="_blank" class="block hover:opacity-90 transition-opacity">
                     <img src="https://i.imgur.com/A4lfjIU.jpg" alt="Boss' Behavior Tree" class="rounded">
-                    <p class="text-base text-gray-600 mt-1 text-center">Boss' Behavior Tree (Click to open in new tab)</p>
+                    <p class="text-base text-gray-600 mt-1 text-center">Boss' Behavior Tree</p>
                 </a>
             </div>
         </section>
 
         <section id="eight-directional-sprite-system" class="mb-12 prose prose-invert max-w-none text-lg">
             <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Eight-Directional Sprite System</h2>
+
+            <p>The game features an eight-directional sprite system similar to the classic Doom (1993). Enemies dynamically change their sprites based on their position relative to the player, creating a sense of being a 3D object while only using sprites.</p>
+
             <div class="image-container">
                 <img src="https://media.giphy.com/media/gZdBe1mF5ISCfxP2To/giphy.gif" alt="Eight-Directional Sprite System" class="rounded large-image">
                 <img src="https://media.giphy.com/media/s3x1EbznMiVRjNHkeu/giphy.gif" alt="Eight-Directional Sprite System" class="rounded large-image">
                 <p class="text-base text-gray-600 mt-1 text-center">Eight-Directional Sprite System</p>
             </div>
-            <p>The system determines the player's relative position using vector calculations:</p>
+            <p>This system determines the player's relative position using vector calculations:</p>
             <ul class="list-disc pl-5">
                 <li><strong>Enemy Forward Vector</strong></li>
                 <li><strong>Enemy Right Vector</strong></li>

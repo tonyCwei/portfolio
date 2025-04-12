@@ -19,11 +19,14 @@ export const dialogueData = {
 
     DOD: `this is DOD`,
 
-    SOT: `this is SOT`,
+    HOF: `Hall of Flame is a top-down roguelike game I created in 4 days using Unity. 
+    Check it out <a href="https://github.com/tonyCwei/hall-of-flame" target="_blank">here</a>.`,
 
-    HOF: `this is HOF`,
+    SOT: `SOT is a small prototype I created when I first started making games with Unity. 
+    It's inspired by <em>Prince of Persia: The Sands of Time</em> on the Nintendo Game Boy Advance SP, where the player can rewind time to solve puzzles. 
+    Visit its <a href="https://github.com/tonyCwei/Platformer-Prototype-SOT" target="_blank">Github</a> for more details.`,
 
-    bed: `This where I sleep`,
+    bed: `Just my bed.`,
 };
 
 

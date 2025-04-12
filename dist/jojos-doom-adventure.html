@@ -15,6 +15,8 @@
             padding: 0.2rem 0.4rem;
             border-radius: 0.25rem;
             font-family: monospace;
+            margin-top: 0.5rem; /* Optional: Add space above inline code */
+            margin-bottom: 0.5rem; /* Optional: Add space below inline code */
         }
 
         pre {
@@ -22,6 +24,8 @@
             padding: 1rem;
             overflow-x: auto;
             border-radius: 0.5rem;
+            margin-top: 1.5rem; /* Add space above the code box */
+            margin-bottom: 1.5rem; /* Add space below the code box */
         }
 
         img, video {
@@ -50,10 +54,51 @@
         section[id] {
             scroll-margin-top: 100px;
         }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%; /* Make it responsive */
+            margin-top: 2rem; /* Add space above the image container */
+            margin-bottom: 0.5rem; /* Add space below the image container */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */           
+        }
+
+        .image-container {
+            display: flex;
+            flex-direction: column; /* Stack images vertically */
+            align-items: center; /* Center images horizontally */
+            margin-top: 2rem; /* Add space above the image container */
+            margin-bottom: 2rem; /* Add space below the image container */
+        }
+
+        .large-image {
+            width: 80%; /* Adjust the width as needed (e.g., 80% of the container) */
+            max-width: 600px; /* Set a maximum width for larger screens */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 10px; /* Space between images */
+        }
+
+        /* Increase font size for specific classes */
+        .text-base {
+            font-size: 1.25rem; /* Adjust this value as needed */
+        }
     </style>
 </head>
 <body class="text-gray-800 font-sans">
-    <div class="max-w-5xl mx-auto p-6">
+    <div class="max-w-5xl mx-auto p-6 relative">
+        <a href="index.html" class="fixed top-6 left-6 z-50">
+            <img src="logo.jpg" alt="Logo" class="h-16 w-auto">
+        </a>
         <h1 class="text-5xl font-bold text-red-600 mb-6">JoJo's Doom Adventure</h1>
         <a href="https://frigidough.itch.io/jojos-doom-adventure" target="_blank">
             <div class="mb-6">
@@ -115,28 +160,14 @@
             <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Perfect Dodge System</h2>
             <p>The game features a <em>Perfect Dodge</em> system where the player can slow down time if they dodge(Press E) an enemy attack (either melee or ranged) in the last second. During a perfect dodge, the environment will shift to black and white, and time will slow around the player, allowing them to take more actions. While time slows for the enemies and environment, the player themselves remain unaffected by the time slowdown.</p>
             <div class="mb-6">
-                <div class="relative pb-[56.25%] h-0 overflow-hidden rounded">
-                    <iframe 
-                        src="https://www.youtube.com/embed/WYLRqR5vXXA" 
-                        title="Melee Attack Perfect Dodge" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        class="absolute top-0 left-0 w-full h-full">
-                    </iframe>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/WYLRqR5vXXA?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <p class="text-base text-gray-600 mt-1 text-center">Melee Attack Perfect Dodge</p>
             </div>
             <div class="mb-6">
-                <div class="relative pb-[56.25%] h-0 overflow-hidden rounded">
-                    <iframe 
-                        src="https://www.youtube.com/embed/7W2IkAgK39A" 
-                        title="Projectile Perfect Dodge" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        class="absolute top-0 left-0 w-full h-full">
-                    </iframe>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/7W2IkAgK39A?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <p class="text-base text-gray-600 mt-1 text-center">Projectile Perfect Dodge</p>
             </div>
@@ -237,15 +268,8 @@
                 <li><strong>Weapon Pickups</strong>: Highlighted in <strong>Blue</strong></li>
             </ul>
             <div class="mb-6">
-                <div class="relative pb-[56.25%] h-0 overflow-hidden rounded">
-                    <iframe 
-                        src="https://www.youtube.com/embed/WYLRqR5vXXA" 
-                        title="Melee Attack Perfect Dodge" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        class="absolute top-0 left-0 w-full h-full">
-                    </iframe>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/pTdOrA1LUJU?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <p class="text-base text-gray-600 mt-1 text-center">Scanner</p>
             </div>
@@ -261,24 +285,46 @@
         <section id="boss-fight" class="mb-12 prose prose-invert max-w-none text-lg">
             <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Boss Fight</h2>
             <div class="mb-6">
-                <img src="https://media.giphy.com/media/mRZljRnmdSmO3IT1MF/giphy.gif" alt="Boss Projectile Attack" class="rounded">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VJczFVShFUs?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Boss Encounter Cutscene Using Level Sequencer</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/VKcTgW3T-lo?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
                 <p class="text-base text-gray-600 mt-1 text-center">Boss Projectile Attack</p>
             </div>
             <div class="mb-6">
-                <img src="gifs/SummonAttack.gif" alt="Boss Summon Attack" class="rounded">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/C9Ds9TkOfXg?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
                 <p class="text-base text-gray-600 mt-1 text-center">Boss Summon Attack</p>
             </div>
             <div class="mb-6">
-                <img src="gifs/DropAttack.gif" alt="Boss Drop Attack" class="rounded">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/RuK720hXI4w?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
                 <p class="text-base text-gray-600 mt-1 text-center">Boss Drop Attack</p>
             </div>
             <div class="mb-6">
-                <img src="gifs/LaserAttack.gif" alt="Boss Laser Attack" class="rounded">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MpNsZUOBHU0?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
                 <p class="text-base text-gray-600 mt-1 text-center">Boss Laser Attack</p>
             </div>
             <div class="mb-6">
-                <img src="gifs/RisingOrb.gif" alt="Boss Rising Orb Attack" class="rounded">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9G6hajQU598?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
                 <p class="text-base text-gray-600 mt-1 text-center">Boss Rising Orb Attack</p>
+            </div>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/l8KN3gbuoo8?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Boss End Cutscene and Level Transition</p>
             </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full bg-gray-800 text-white rounded-lg">
@@ -322,21 +368,23 @@
             <div class="mb-6">
                 <a href="https://i.imgur.com/A4lfjIU.jpg" target="_blank" class="block hover:opacity-90 transition-opacity">
                     <img src="https://i.imgur.com/A4lfjIU.jpg" alt="Boss' Behavior Tree" class="rounded">
-                    <p class="text-base text-gray-600 mt-1 text-center">Boss' Behavior Tree (Click to open in new tab)</p>
+                    <p class="text-base text-gray-600 mt-1 text-center">Boss' Behavior Tree</p>
                 </a>
             </div>
         </section>
 
         <section id="eight-directional-sprite-system" class="mb-12 prose prose-invert max-w-none text-lg">
             <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Eight-Directional Sprite System</h2>
-            <p>The game features an eight-directional sprite system similar to the classic <em>Doom (1993)</em>. Enemies dynamically change their sprites based on their position relative to the player, creating a sense of being a 3D object while only using sprites.</p>
-            <div class="mb-6">
-                <img src="https://media.giphy.com/media/gZdBe1mF5ISCfxP2To/giphy.gif" alt="Eight-Directional Sprite System" class="rounded">
-                <img src="https://media.giphy.com/media/s3x1EbznMiVRjNHkeu/giphy.gif" alt="Eight-Directional Sprite System" class="rounded">
+
+            <p>The game features an eight-directional sprite system similar to the classic Doom (1993). Enemies dynamically change their sprites based on their position relative to the player, creating a sense of being a 3D object while only using sprites.</p>
+
+            <div class="image-container">
+                <img src="https://media.giphy.com/media/gZdBe1mF5ISCfxP2To/giphy.gif" alt="Eight-Directional Sprite System" class="rounded large-image">
+                <img src="https://media.giphy.com/media/s3x1EbznMiVRjNHkeu/giphy.gif" alt="Eight-Directional Sprite System" class="rounded large-image">
                 <p class="text-base text-gray-600 mt-1 text-center">Eight-Directional Sprite System</p>
             </div>
-            <p>The system determines the player's relative position using vector calculations:</p>
-            <ul>
+            <p>This system determines the player's relative position using vector calculations:</p>
+            <ul class="list-disc pl-5">
                 <li><strong>Enemy Forward Vector</strong></li>
                 <li><strong>Enemy Right Vector</strong></li>
                 <li><strong>Vector from Enemy to Player</strong> (<code>Enemy->Player</code>)</li>
@@ -445,22 +493,30 @@
         <section id="additional-gameplay-elements" class="mb-12 prose prose-invert max-w-none text-lg">
             <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Additional Gameplay Elements</h2>
             <div class="mb-6">
-                <img src="https://media.giphy.com/media/ugq4uRhIgsFqdZ1xdy/giphy.gif" alt="Zig-Zag Enemy" class="rounded">
-                <p class="text-base text-gray-600 mt-1 text-center">Zig-Zag Enemy</p>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9oPrG87H9Uc?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Explosive Barrel</p>
             </div>
             <div class="mb-6">
-                <img src="gifs/LaserRoom.gif" alt="Laser Room" class="rounded">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MDWXNpkE11o?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
                 <p class="text-base text-gray-600 mt-1 text-center">Laser Room</p>
             </div>
             <div class="mb-6">
-                <img src="gifs/ChaosDestruction.gif" alt="Chaos Destruction System" class="rounded">
-                <p class="text-base text-gray-600 mt-1 text-center">Chaos Destruction System</p>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/iRcnnehkXWY?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">Destructible with Chaos System</p>
             </div>
             <div class="mb-6">
-                <img src="https://media.giphy.com/media/L3boiCPlOiUaeT7EV8/giphy.gif" alt="Chase Sequence" class="rounded">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/o4KRM8-D6Pk?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
                 <p class="text-base text-gray-600 mt-1 text-center">Chase Sequence</p>
             </div>
-            <p><strong>For a full gameplay breakdown featuring all 7 weapons, 5 enemy types, and more, please check out the video in the <a href="#gameplay-video" class="text-blue-400 hover:underline">Gameplay Video</a> section above.</strong></p>
+            <p><strong>For a full gameplay video featuring all 7 weapons, 5 enemy types, and more, please check out the video in the <a href="#gameplay-video" class="text-blue-400 hover:underline">Gameplay Video</a> section above.</strong></p>
         </section>
 
         <footer class="mt-16 border-t border-gray-200 pt-6 text-center text-base text-gray-500">

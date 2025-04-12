@@ -61,6 +61,8 @@
             height: 0;
             overflow: hidden;
             max-width: 100%; /* Make it responsive */
+            margin-top: 2rem; /* Add space above the image container */
+            margin-bottom: 0.5rem; /* Add space below the image container */
         }
 
         .video-container iframe {
@@ -68,9 +70,7 @@
             top: 0;
             left: 0;
             width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            margin-top: 2rem; /* Add space above the image container */
-            margin-bottom: 2rem; /* Add space below the image container */
+            height: 100%; /* Full height */           
         }
 
         .image-container {
@@ -137,15 +137,15 @@
             <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Level Design</h2>
             <p>During the level design process, a <strong>blockout</strong> was first created using Unreal Engine 5's <strong>cube grid system</strong>. This level includes two major objectives:</p>
             <ul class="numbered-bullets">
-                <li><strong>Find three colored keys</strong> (Blue, Orange, and Red) to unlock different parts of the level.</li>
-                <li><strong>Activate three generators</strong> to power the passageway to the boss fight.</li>
+                <li>Find three colored keys (Blue, Orange, and Red) to unlock different parts of the level.</li>
+                <li>Activate three generators to power the passageway to the boss fight.</li>
             </ul>
             <p>The blockout allowed me to quickly plan and decide where to place <strong>locked doors</strong> and <strong>generators</strong>, helping me experiment with how these elements fit within the level's layout.</p>
             <div class="mb-6">
                 <img src="https://i.imgur.com/pCFdiDR.png" alt="Blockout Level" class="rounded">
                 <p class="text-base text-gray-600 mt-1 text-center">Blockout Level</p>
             </div>
-            <p>Once the blockout was complete and the core gameplay elements were established, the <strong>actual map</strong> was built based on the blockout layout. The entire level was also fully optimized through <strong>level streaming</strong> to ensure better performance.</p>
+            <p>Once the blockout was complete and the core gameplay elements were established, the actual map was built based on the blockout layout. The entire level was also fully optimized through <strong>level streaming</strong> to ensure better performance.</p>
             <div class="mb-6">
                 <img src="https://i.imgur.com/vPEuAoS.png" alt="Finished Level" class="rounded">
                 <p class="text-base text-gray-600 mt-1 text-center">Finished Level</p>
@@ -158,7 +158,7 @@
 
         <section id="perfect-dodge-system" class="mb-12 prose prose-invert max-w-none text-lg">
             <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Perfect Dodge System</h2>
-            <p>The game features a <em>Perfect Dodge</em> system where the player can slow down time if they dodge(Press E) an enemy attack (either melee or ranged) in the last second. During a perfect dodge, the environment will shift to black and white, and time will slow around the player, allowing them to take more actions. While time slows for the enemies and environment, the player themselves remain unaffected by the time slowdown.</p>
+            <p>The game features a Perfect Dodge system where the player can slow down time if they dodge(Press E) an enemy attack (either melee or ranged) in the last second. During a perfect dodge, the environment will shift to black and white, and time will slow around the player, allowing them to take more actions. While time slows for the enemies and environment, the player themselves remain unaffected by the time slowdown.</p>
             <div class="mb-6">
                 <div class="video-container">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/WYLRqR5vXXA?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -173,8 +173,8 @@
             </div>
             <p>This <em>Perfect Dodge</em> system consists of two major parts:</p>
             <ul class="numbered-bullets">
-                <li><strong>Determine if the player's dodge was perfect</strong></li>
-                <li><strong>Slow down time around the player and add the black-and-white effect</strong></li>
+                <li>Determine if the player's dodge was perfect</li>
+                <li>Slow down time around the player and add the black-and-white effect</li>
             </ul>
             <div class="mt-8">
                 <h3 class="text-2xl font-semibold text-green-400 text-center mb-4">Part 1: Perfect Dodge Check</h3>
@@ -261,7 +261,7 @@
 
         <section id="scanner" class="mb-12 prose prose-invert max-w-none text-lg">
             <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Scanner</h2>
-            <p>Pressing <code>Z</code> in-game activates the <strong>Environmental Scanner</strong>, which highlights important objects in the surroundings:</p>
+            <p>Pressing <code>Z</code> in-game activates the Environmental Scanner, which highlights important objects in the surroundings:</p>
             <ul>
                 <li><strong>Enemies</strong>: Highlighted in <strong>Red</strong></li>
                 <li><strong>Pickups</strong> (Health, Armor, Ammo, Keys): Highlighted in <strong>Green</strong></li>
@@ -275,10 +275,10 @@
             </div>
             <p>How it works:</p>
             <ul class="numbered-bullets">
-                <li>Spawn the <a href="https://github.com/tonyCwei/JoJos-Doom-Adventure/blob/main/Source/Doom/Ability/Scanner.cpp" class="text-blue-400 hover:underline" target="_blank">Scanner Actor</a> at the player location, which contains a <strong>Post Process Component</strong> that will apply the scanner material(<a href="https://blueprintue.com/blueprint/kme0-79b/" class="text-blue-400 hover:underline" target="_blank">Material Blueprint</a>).</li>
-                <li>The scanner expanding effect is achieved by updating the material's radius through <strong>Material Parameter Collection</strong> in the scanner's <strong>TimelineUpdate</strong>.</li>
-                <li><strong>Custom Stencils</strong> are assigned to relevant objects, allowing the material to differentiate between enemies, pickups, and weapons.</li>
-                <li>A <strong>Sphere Trace</strong> with the same expanding radius as the scanner material's is draw during each frame of scanner's <strong>TimelineUpdate</strong>. For any hit actors that need to be highlighted, their <code>Render CustomDepth Pass</code> property is toggled <strong>on</strong>, enabling them to appear in the scan. After a delay of <strong>5 seconds</strong> (the duration of the highlight), <code>RenderCustomDepth</code> is toggled <strong>off</strong>, returning them to normal rendering.</li>
+                <li>Spawn the <a href="https://github.com/tonyCwei/JoJos-Doom-Adventure/blob/main/Source/Doom/Ability/Scanner.cpp" class="text-blue-400 hover:underline" target="_blank">Scanner Actor</a> at the player location, which contains a <code>Post Process Component</code> that will apply the scanner material(<a href="https://blueprintue.com/blueprint/kme0-79b/" class="text-blue-400 hover:underline" target="_blank">Material Blueprint</a>).</li>
+                <li>The scanner expanding effect is achieved by updating the material's radius through <code>Material Parameter Collection</code> in the scanner's <code>TimelineUpdate</code>.</li>
+                <li><code>Custom Stencils</code> are assigned to relevant objects, allowing the material to differentiate between enemies, pickups, and weapons.</li>
+                <li>Draw <code>Sphere Trace</code> with the same expanding radius as the scanner material's during each frame of scanner's <code>TimelineUpdate</code>. For any hit actors that need to be highlighted, their <code>Render CustomDepth Pass</code> property is toggled on, enabling them to appear in the scan. After a delay of 5 seconds (the duration of the highlight), <code>RenderCustomDepth</code> is toggled off, returning them to normal rendering.</li>
             </ul>
         </section>
 
@@ -364,7 +364,7 @@
                     </tbody>
                 </table>
             </div>
-            <p class="mt-4">Above attack patterns are categorized into <strong>Light</strong> and <strong>Medium</strong> attacks. <strong>Heavy</strong> attacks consist of different <strong>combinations</strong> of the above boss attacks. The boss will first determine which <strong>attack category</strong>(Light, Medium, Heavy, or Filler) to use based on cooldowns and internal timers. Once the category is selected, the boss will then <strong>randomly choose an attack</strong> from the available task pool within that category.</p>
+            <p class="mt-4">Above attack patterns are categorized into Light and Medium attacks. Heavy attacks consist of different combinations of the above boss attacks. The boss will first determine which attack category(Light, Medium, Heavy, or Filler) to use based on cooldowns and internal timers. Once the category is selected, the boss will then randomly choose an attack from the available task pool within that category.</p>
             <div class="mb-6">
                 <a href="https://i.imgur.com/A4lfjIU.jpg" target="_blank" class="block hover:opacity-90 transition-opacity">
                     <img src="https://i.imgur.com/A4lfjIU.jpg" alt="Boss' Behavior Tree" class="rounded">

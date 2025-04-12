@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tony Wei</title>
+    <title>Home | Tony Wei</title>
 </head>
 <body>
     <style>
@@ -25,6 +25,21 @@
             position: relative;
         }
 
+        /* New background div */
+        .left-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 18%; /* Adjust width as needed */
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Transparent black */
+            z-index: 1; /* Ensure it is behind other content */
+            display: flex; /* Use flexbox for centering */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+        }
+
         #textbox {
             position: absolute;
             left: 10%;
@@ -43,6 +58,7 @@
             word-spacing: 0.2rem;
             filter: drop-shadow(0 0 0.75rem rgb(112, 112, 112));
             /* overflow: auto; */
+            z-index: 2;
         }
 
         .ui-text {
@@ -71,12 +87,47 @@
             flex-direction: column;
             color: rgb(238, 238, 238);
         }
+
+        .profile-pic {
+            width: 200px; /* Adjust size as needed */
+            height: 200px; /* Adjust size as needed */
+            z-index: 2; /* Ensure it is above the background */
+        }
+
+        .profile-info {
+            color: white; /* Change text color as needed */
+            z-index: 2; /* Ensure it is above the background */
+            text-align: center; /* Center text */
+        }
+
+        .profile-info a {
+            color: white; /* Change hyperlink color to white */
+            text-decoration: none; /* Remove underline if desired */
+        }
+
+        .profile-info a:hover {
+            text-decoration: underline; /* Optional: Add underline on hover */
+        }
     </style>
 
     <div id="app">
+        <div class="left-background">
+            <img src="profilepic.png" alt="Profile Picture" class="profile-pic">
+            <div class="profile-info">
+                <p>Tony Wei</p>
+                <p>
+                    <a href="mailto:weichenhao2020@gmail.com">weichenhao2020@gmail.com</a>
+                </p>
+                <p>
+                    <a href="https://frigidough.itch.io" target="_blank">itch.io</a>
+                </p>
+                <p>Cyberpunk Enthusiast</p>
+            </div>
+        </div> <!-- New background div -->
         <div>
+            
             <p class="note">
-                🕹️ WSAD or Tap/Left Click to Move<br>
+                🕹️ WSAD or Left Click to Move<br>
                 🗨️ Spacebar or Click Close to End Dialogue
             </p>
 

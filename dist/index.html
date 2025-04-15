@@ -125,21 +125,20 @@
             padding: 0.5rem 1rem; /* Padding for the button */
             cursor: pointer; /* Change cursor to pointer */
             z-index: 2; /* Ensure it is above other content */
+            font-weight: bold;
         }
 
         .hide-btn:hover {
-            background-color: transparent; /* Keep background transparent on hover */
-            color: blueviolet; /* Change text color to blueviolet on hover */
+            background-color: transparent;
+            color: red; 
+             
         }
 
-        .profile-info:hover {
-            color: blueviolet; /* Change text color to blueviolet when hovered */
-        }
     </style>
 
     <div id="app">
         <div class="left-background">
-            <button id="hide-button" class="hide-btn">Hide Info</button>
+            <button id="hide-button" class="hide-btn">Hide</button>
             <img src="profilepic.png" alt="Profile Picture" class="profile-pic">
             <div class="profile-info">
                 <p>Tony Wei</p>
@@ -152,7 +151,7 @@
                 <p>Cyberpunk Enthusiast</p>
             </div>
         </div>
-        <button id="unhide-button" class="hide-btn" style="display: none;">Display Info</button>
+        <button id="unhide-button" class="hide-btn" style="display: none;">Display</button>
         <div>
             <p class="note">
                 🕹️ WSAD or Left Click to Move<br>

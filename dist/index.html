@@ -31,14 +31,16 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 18%; /* Adjust width as needed */
+            width: 100%; /* Full width */
+            max-width: 400px; /* Optional: Set a max width */
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8); /* Transparent black */
             z-index: 1; /* Ensure it is behind other content */
-            display: flex; /* Use flexbox for centering */
+            display: flex;
             flex-direction: column; /* Stack items vertically */
             align-items: center; /* Center items horizontally */
             justify-content: center; /* Center items vertically */
+            margin: 0 auto; /* Center the section */
         }
 
         #textbox {
@@ -90,8 +92,9 @@
         }
 
         .profile-pic {
-            width: 200px; /* Adjust size as needed */
-            height: 200px; /* Adjust size as needed */
+            width: 100%; /* Make the profile picture responsive */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 150px; /* Optional: Set a max width for the profile picture */
             z-index: 2; /* Ensure it is above the background */
         }
 
@@ -99,6 +102,7 @@
             color: white; /* Change text color as needed */
             z-index: 2; /* Ensure it is above the background */
             text-align: center; /* Center text */
+            padding: 1rem; /* Add some padding */
         }
 
         .profile-info a {
@@ -124,7 +128,7 @@
                 </p>
                 <p>Cyberpunk Enthusiast</p>
             </div>
-        </div> <!-- New background div -->
+        </div> 
         <div>
             
             <p class="note">

@@ -113,10 +113,33 @@
         .profile-info a:hover {
             color: blueviolet;
         }
+
+        .hide-btn {
+            position: absolute; /* Position it absolutely within the parent */
+            top: 10px; /* Adjust as needed */
+            left: 10px; /* Change from right to left */
+            background-color: transparent; /* Make background transparent */
+            color: white; /* Text color */
+            border: 2px solid rgba(255, 255, 255, 0.8); /* Optional: Add a border for visibility */
+            border-radius: 5px; /* Rounded corners */
+            padding: 0.5rem 1rem; /* Padding for the button */
+            cursor: pointer; /* Change cursor to pointer */
+            z-index: 2; /* Ensure it is above other content */
+        }
+
+        .hide-btn:hover {
+            background-color: transparent; /* Keep background transparent on hover */
+            color: blueviolet; /* Change text color to blueviolet on hover */
+        }
+
+        .profile-info:hover {
+            color: blueviolet; /* Change text color to blueviolet when hovered */
+        }
     </style>
 
     <div id="app">
         <div class="left-background">
+            <button id="hide-button" class="hide-btn">Hide Info</button>
             <img src="profilepic.png" alt="Profile Picture" class="profile-pic">
             <div class="profile-info">
                 <p>Tony Wei</p>
@@ -128,15 +151,13 @@
                 </p>
                 <p>Cyberpunk Enthusiast</p>
             </div>
-        </div> 
+        </div>
+        <button id="unhide-button" class="hide-btn" style="display: none;">Display Info</button>
         <div>
-            
             <p class="note">
                 🕹️ WSAD or Left Click to Move<br>
                 🗨️ Spacebar or Click Close to End Dialogue
             </p>
-
-
             <div id="textbox-container" style="display: none">
                 <div id="textbox">
                     <p id="dialogue" class="ui-text"></p>
@@ -148,6 +169,21 @@
         </div>
         <canvas id="game"></canvas>
     </div>
+    <script>
+        document.getElementById('hide-button').addEventListener('click', function() {
+            const leftBackground = document.querySelector('.left-background');
+            leftBackground.style.display = 'none'; // Hide the background
+            document.getElementById('hide-button').style.display = 'none'; // Hide the hide button
+            document.getElementById('unhide-button').style.display = 'block'; // Show the unhide button
+        });
+
+        document.getElementById('unhide-button').addEventListener('click', function() {
+            const leftBackground = document.querySelector('.left-background');
+            leftBackground.style.display = 'flex'; // Show the background
+            document.getElementById('unhide-button').style.display = 'none'; // Hide the unhide button
+            document.getElementById('hide-button').style.display = 'block'; // Show the hide button
+        });
+    </script>
 </body>
 </html>
 

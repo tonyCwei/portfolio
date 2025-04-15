@@ -14,10 +14,11 @@ export const dialogueData = {
     pc: `I publish all the games I create on my <a href="https://frigidough.itch.io" target="_blank">itch.io</a> page. 
     Feel free to take a look! Contact me at <a href = "mailto:weichenhao2020@gmail.com">weichenhao2020@gmail.com</a > if you have any job opportunities!`,
 
-    JJDA: `JoJo's Doom Adventure is my latest project, a fast-paced first-person shooter made in Unreal Engine 5, inspired by JoJo's Bizarre Adventure and classic DOOM gameplay. 
+    JJDA: `JoJo's Doom Adventure is my latest project, a first-person shooter made in Unreal Engine 5, inspired by classic DOOM with some JoJo's Bizarre Adventure references. 
     For a detailed breakdown and highlights, click <a href="jojos-doom-adventure.html" target="_blank">here</a>.`,
 
-    DOD: `this is DOD`,
+    DOD: `Dungeon of the Dead is a game I created when I first started learning Unreal Engine 5. It's a walking simulator with puzzles and occasional jump scares. 
+    Click <a href="dungeon-of-dead.html" target="_blank">here</a> for more details.`,
 
     HOF: `Hall of Flame is a top-down roguelike game I created in 4 days using Unity. 
     Check it out <a href="https://github.com/tonyCwei/hall-of-flame" target="_blank">here</a>.`,

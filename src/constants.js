@@ -2,7 +2,7 @@ export const scaleFactor = 4;
 export const playerScaleFactor = 6;
 
 export const dialogueData = {
-    resume: `This is my <a href="https://drive.google.com/file/d/1PWcwJf8xRTICqCEJweWaeSYzAI-2bTvA/view?usp=sharing" target="_blank">Resume</a>.
+    resume: `This is my <a href="https://drive.google.com/file/d/1xDLzkHM5d_oxY9X3HzA6eIrxtgKkdo2I/view?usp=sharing" target="_blank">Resume</a>.
              Let's also stay connected on <a href="http://www.linkedin.com/in/chenhaotonywei" target="_blank">LinkedIn</a>.`,
 
     fridge: `What's inside the fridge? Only my favorite foods: lobster and lamb chops.`,

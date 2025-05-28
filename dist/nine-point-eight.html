@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nine Point Eight</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+        code {
+            background-color: #f3f4f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            margin-top: 0.5rem; /* Optional: Add space above inline code */
+            margin-bottom: 0.5rem; /* Optional: Add space below inline code */
+        }
+        pre {
+            background-color: #f3f4f6;
+            padding: 1rem;
+            overflow-x: auto;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem; /* Add space above the code box */
+            margin-bottom: 1.5rem; /* Add space below the code box */
+        }
+        img, video {
+            margin: 1rem 0;
+        }
+        .image-container {
+            display: flex;
+            flex-direction: column; /* Stack images vertically */
+            align-items: center; /* Center images horizontally */
+            margin-top: 2rem; /* Add space above the image container */
+            margin-bottom: 2rem; /* Add space below the image container */
+        }
+        .large-image {
+            width: 80%; /* Adjust the width as needed (e.g., 80% of the container) */
+            max-width: 600px; /* Set a maximum width for larger screens */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 10px; /* Space between images */
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%; /* Make it responsive */
+            margin-top: 2rem; /* Add space above the image container */
+            margin-bottom: 0.5rem; /* Add space below the image container */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */           
+        }
+
+        h2 {
+            padding-top: 20px; /* Adjust the value as needed */
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans">
+    <div class="max-w-5xl mx-auto p-6 relative">
+        <!-- <a href="index.html" class="fixed top-6 left-6 z-50">
+            <img src="logo.jpg" alt="Logo" class="h-16 w-auto">
+        </a> -->
+        <h1 class="text-5xl font-bold text-red-600 mb-6 text-center">Nine Point Eight</h1>
+        <p class="text-lg mb-4">Nine Point Eight is a platformer about gravity, 
+            featuring 10 levels where players must shift gravity direction to reach the exit. 
+            Additionally, different gravitational forces will take effect depending on the planet the player is on.</p>
+        <a href="https://frigidough.itch.io/nine-point-eight" target="_blank" class="mb-6 inline-block">
+            <img src="https://img.shields.io/badge/Download%20on-itch.io-FA5C5C.svg?logoWidth=150" alt="Download on itch.io" class="rounded">
+        </a>
+        <a href="https://github.com/tonyCwei/NinePointEight" target="_blank" class="mb-6 inline-block">
+            <img src="https://img.shields.io/badge/Source%20Code-GitHub-181717.svg?logo=github&logoWidth=150" alt="Source Code on GitHub" class="rounded">
+        </a>
+
+        <h2 class="text-3xl font-semibold text-yellow-400 mb-8 text-center">Gameplay Video</h2>
+        <div class="mb-6">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/achkkxGMFiY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <!-- <p class="text-base text-gray-600 mt-1 text-center">Title Screen Video</p> -->
+        </div>
+
+
+        <h2 class="text-3xl font-semibold text-green-400 mb-8 text-center">Title And Level Selection Screen</h2>
+        <p class="text-lg mb-4">Since each level is based on the gravitational force of a different planet in the solar system, 
+            I thought it would be cool to create a level selection screen that represents the actual solar system, 
+            with all the planets actively rotating and orbiting.</p>
+
+         <p class="text-lg mb-4">The camera will zoom onto a planet when the player hovers their mouse over the corresponding level.</p>    
+        
+         <div class="mb-6">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/EUcq0COjKKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p class="text-base text-gray-600 mt-1 text-center">Level Select Screen with Locked Levels</p>
+
+            <p class="text-lg mb-4"></p>
+            <p class="text-lg mb-4">Each planet will be unlocked as the player progresses through each level.</p>
+
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6-bmkjgf1sw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p class="text-base text-gray-600 mt-1 text-center">Level Select Screen (All Planets Unlocked)</p>
+        </div>
+
+
+        <h2 class="text-3xl font-semibold text-green-400 mb-8 text-center">Gravity Shift</h2>
+        <p class="text-lg mb-4">When the player steps onto certain platforms, their gravity direction shifts to become perpendicular to the platform's surface. While Unreal Engine provides a built-in function to change a pawn's gravity direction, additional work is required to make the system behave correctly.</p>
+        <p class="text-lg mb-4">After changing the gravity direction, the player's input will become disoriented. 
+            For example, if gravity is flipped to the opposite of the world's default, and after I adjust the camera so the player doesn't appear upside down, 
+            the mouse input becomes inverted. Additionally, in a basic WASD control scheme, 
+            pressing 'A' will make the character go right, and 'D' will move them left. 
+            This happens because in a third-person control system, movement is based on the control rotation from the PlayerController. 
+            If I don't update the PlayerController to account for the new gravity direction, then only the player character is affected by the gravity shift, 
+            while the controller still thinks gravity is unchanged.</p>
+        <p class="text-lg mb-4">
+                  With the help of <a href="https://dev.epicgames.com/community/learning/tutorials/w6l7/unreal-engine-custom-gravity-in-ue-5-4" 
+                  class="text-blue-600 underline hover:text-blue-800" 
+                  target="_blank" 
+                  rel="noopener noreferrer">
+                  an Unreal Engine Developer Community blog
+               </a>, I was able to implement proper controls for the gameplay I wanted. For the PlayerController, I created a custom PlayerController class where additional calculations are performed on the control rotation received from mouse input.
+                </p>
+              
+        <p class="text-lg mb-4">
+                  The control rotation is first converted from world space into a gravity relative space. By doing so, the rotation takes the current gravity direction into account, 
+                  allowing the player's mouse input to modify it as if no custom gravity was affecting it. Once all input is applied to this 'local' control rotation, 
+                  it is then converted back into world space based on the current gravity direction. This final result is used as the actual control rotation.
+                </p>
+              
+        <p class="text-lg mb-4">
+                  Similarly, for left and right movement, the control rotation is also converted relative to the gravity direction first. Unlike the original movement system, which only needs yaw of control rotation for movement direction, both yaw and roll are now necessary to correctly determine the 'right' direction when custom gravity direction is involved.
+                </p>
+              
+        <p class="text-lg mb-4">
+                  Finally, a minor fix was needed in the character animation graph for running animation, as the player can now move not only along the X and Y axes, but also along the Z axis due to the gravity shifts.
+                </p>
+
+        <div class="mb-6">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/CFp3959rgPQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p class="text-base text-gray-600 mt-1 text-center">Gravity Shift and Level Exit</p>
+        
+        <p class="text-lg mb-4"></p>    
+        <p class="text-lg mb-4">
+            Simply stepping onto the level exit won't clear the level. The player must align their gravitational force perpendicular to the exit in order to complete it.
+              </p>    
+        
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/fSfAzg2BmNI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p class="text-base text-gray-600 mt-1 text-center">Level Exit Gravity Direction</p>
+        </div>
+
+        <h2 class="text-3xl font-semibold text-green-400 mb-8 text-center">Double Trouble</h2>
+        <p class="text-lg mb-4">In some levels, two pawns appear on screen in a split-screen setup. 
+            These two characters receive the same input, meaning they move, jump, and rotate the camera simultaneously. 
+            To achieve this, I had to implement a custom 'Double Trouble' game mode.</p>
+        <p class="text-lg mb-4">After spawning the two characters at their respective custom PlayerStart classes, I created a new local player to possess the body double(character on the right) to create the split-screen setup.
+            However, the body double does not really receive input from player, the main character (on the left) stores the body double character as a reference instead. 
+            The body double's movement functions, such as move, look, and jump, are then called within the main character's corresponding functions.</p>
+        <p class="text-lg mb-4">But making two characters move identically won't create much interesting gameplay, 
+            so I added a mechanic that allows the player to lock or unlock each character's camera independently by holding Q or E. 
+            This enables players to solve puzzles by controlling both characters simultaneously while allowing them to move in different directions and orientations.</p>
+        
+        <p class="text-lg mb-4">Below are two of the five levels that feature Double Trouble game mode:</p>
+        
+        <div class="mb-6">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/cG6vvqGWj7Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p class="text-base text-gray-600 mt-1 text-center">Level 5 - Mars</p>
+        </div>
+
+        <div class="mb-6">
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ikPZIlfydR4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p class="text-base text-gray-600 mt-1 text-center">Level 7 - Saturn</p>
+        </div>
+
+        
+    </div>
+</body>
+</html>

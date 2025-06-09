@@ -112,6 +112,8 @@
             <ul class="flex flex-wrap justify-center gap-4 text-lg font-semibold text-gray-700">
                 <li><a href="#gameplay-video" class="hover:text-red-500 transition-colors duration-200">Gameplay Video</a></li>
                 <li><a href="#level-design" class="hover:text-red-500 transition-colors duration-200">Level Design</a></li>
+                <li><a href="#weapons" class="hover:text-red-500 transition-colors duration-200">Weapons</a></li>
+                <li><a href="#enemies" class="hover:text-red-500 transition-colors duration-200">Enemies</a></li>
                 <li><a href="#perfect-dodge-system" class="hover:text-red-500 transition-colors duration-200">Perfect Dodge</a></li>
                 <li><a href="#scanner" class="hover:text-red-500 transition-colors duration-200">Scanner</a></li>
                 <li><a href="#boss-fight" class="hover:text-red-500 transition-colors duration-200">Boss Fight</a></li>
@@ -150,6 +152,139 @@
             <div class="mb-6">
                 <img src="https://i.imgur.com/oQUBKQK.jpg" alt="Boss Arena" class="rounded">
                 <p class="text-base text-gray-600 mt-1 text-center">Boss Arena</p>
+            </div>
+        </section>
+
+        <section id="weapons" class="mb-12 prose prose-invert max-w-none text-lg">
+            <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Weapons</h2>
+            <p class="text-lg mb-4">
+                I implemented a total of seven weapons for the game: Fist, Pistol, Shotgun, Minigun, Plasma Gun, Rocket Launcher, and BFG. Before diving into the implementation, I created a class diagram to plan out the weapon system class hierarchy. 
+                <div class="mb-6">
+                    <img src="https://i.imgur.com/EdoXsRo.png" alt="Weapon Class Diagram" class="rounded mx-auto mt-8">
+                    <p class="text-base text-gray-600 mt-1 text-center">Weapon Class Diagram</p>
+                </div>
+              </p>
+
+            <p class="text-lg mb-4">To balance gameplay, I also constructed a weapon damage table summarizing each weapon's stats and mechanics:</p>
+
+              <table class="table-auto w-full text-left mb-10">
+                <thead>
+                  <tr>
+                    <th class="px-2 py-1 border-b">Weapon</th>
+                    <th class="px-2 py-1 border-b">Damage Per Hit/Shot</th>
+                    <th class="px-2 py-1 border-b">DPS (Approx.)</th>
+                    <th class="px-2 py-1 border-b">Mechanics</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="px-2 py-1 border-b">Fist</td>
+                    <td class="px-2 py-1 border-b">1</td>
+                    <td class="px-2 py-1 border-b">1 DPS</td>
+                    <td class="px-2 py-1 border-b">Minimal damage, pushes enemy back, 1 hit/sec</td>
+                  </tr>
+                  <tr>
+                    <td class="px-2 py-1 border-b">Pistol</td>
+                    <td class="px-2 py-1 border-b">15</td>
+                    <td class="px-2 py-1 border-b">50 DPS</td>
+                    <td class="px-2 py-1 border-b">Fire rate 0.3s, 3.3 shots/sec</td>
+                  </tr>
+                  <tr>
+                    <td class="px-2 py-1 border-b">Shotgun</td>
+                    <td class="px-2 py-1 border-b">12 pellets × 10</td>
+                    <td class="px-2 py-1 border-b">120 DPS</td>
+                    <td class="px-2 py-1 border-b">Fire rate 1s, 1 shell/sec, short range</td>
+                  </tr>
+                  <tr>
+                    <td class="px-2 py-1 border-b">Minigun</td>
+                    <td class="px-2 py-1 border-b">14</td>
+                    <td class="px-2 py-1 border-b">93 DPS</td>
+                    <td class="px-2 py-1 border-b">Fire rate 0.15s, 6.67 shots/sec</td>
+                  </tr>
+                  <tr>
+                    <td class="px-2 py-1 border-b">Plasma Gun</td>
+                    <td class="px-2 py-1 border-b">20</td>
+                    <td class="px-2 py-1 border-b">100 DPS</td>
+                    <td class="px-2 py-1 border-b">Fire rate 0.2s, 5 shots/sec</td>
+                  </tr>
+                  <tr>
+                    <td class="px-2 py-1 border-b">Rocket Launcher</td>
+                    <td class="px-2 py-1 border-b">180</td>
+                    <td class="px-2 py-1 border-b">180 DPS</td>
+                    <td class="px-2 py-1 border-b">Fire rate 1s, AoE explosion</td>
+                  </tr>
+                  <tr>
+                    <td class="px-2 py-1 border-b">BFG</td>
+                    <td class="px-2 py-1 border-b">150</td>
+                    <td class="px-2 py-1 border-b">150 DPS</td>
+                    <td class="px-2 py-1 border-b">1s charge time, 30 cells/shot, AoE explosion</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            <p class="text-lg mb-2">Here's a video showcasing the weapons in action:</p>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/RVDFEAplnlo?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">JoJo's Doom Adventure Weapons</p>
+            </div>
+        </section>
+
+        <section id="enemies" class="mb-12 prose prose-invert max-w-none text-lg">
+            <h2 class="text-3xl font-semibold text-green-400 text-center mb-8">Enemies</h2>
+            <p class="text-lg mb-4">
+              I created a total of five regular enemy types for this game: Hybrid Monster, Demon Dog, Ratman, Zig-Zager, and Self-Destructive Bug. All enemy AIs are implemented using a combination of <strong>C++, behavior trees, and Unreal Engine's Environment Query System (EQS)</strong>. Below is a table from my design documentation summarizing each enemy's stats and mechanics:
+            </p>
+            <table class="table-auto w-full text-left mb-10">
+              <thead>
+                <tr>
+                  <th class="px-2 py-1 border-b">Enemy</th>
+                  <th class="px-2 py-1 border-b">Health</th>
+                  <th class="px-2 py-1 border-b">Attack Damage</th>
+                  <th class="px-2 py-1 border-b">Mechanics</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-2 py-1 border-b">Hybrid Monster</td>
+                  <td class="px-2 py-1 border-b">100</td>
+                  <td class="px-2 py-1 border-b">10 (melee) / 4 (ranged)</td>
+                  <td class="px-2 py-1 border-b">Hybrid enemy. Shoots a projectile if far from the player, switches to melee attacks when close.</td>
+                </tr>
+                <tr>
+                  <td class="px-2 py-1 border-b">Demon Dog</td>
+                  <td class="px-2 py-1 border-b">80</td>
+                  <td class="px-2 py-1 border-b">10 (melee)</td>
+                  <td class="px-2 py-1 border-b">Melee enemy. Moves toward the player and dashes toward the player when close, dealing damage in a straight line.</td>
+                </tr>
+                <tr>
+                  <td class="px-2 py-1 border-b">Ratman</td>
+                  <td class="px-2 py-1 border-b">60</td>
+                  <td class="px-2 py-1 border-b">4 (ranged)</td>
+                  <td class="px-2 py-1 border-b">Ranged enemy. Moves away from the player and shoots three projectiles at a time.</td>
+                </tr>
+                <tr>
+                  <td class="px-2 py-1 border-b">Zig-Zager</td>
+                  <td class="px-2 py-1 border-b">150</td>
+                  <td class="px-2 py-1 border-b">20 (melee)</td>
+                  <td class="px-2 py-1 border-b">Melee enemy. Moves toward the player in a zig-zag pattern and attacks when in range.</td>
+                </tr>
+                <tr>
+                  <td class="px-2 py-1 border-b">Self-Destructive Bug</td>
+                  <td class="px-2 py-1 border-b">30</td>
+                  <td class="px-2 py-1 border-b">25 (AoE explosion)</td>
+                  <td class="px-2 py-1 border-b">Melee enemy. Moves toward the player and explodes at close range, dealing AoE damage.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="text-lg mb-2">Here's a video of all the enemies:</p>
+            <div class="mb-6">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/T3oQ__Qeu4A?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="text-base text-gray-600 mt-1 text-center">JoJo's Doom Adventure Enemies</p>
             </div>
         </section>
 
